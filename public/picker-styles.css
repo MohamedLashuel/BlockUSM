@@ -1,0 +1,9 @@
+.element-picker-hover {
+  border-style: solid !important;
+  border-color: red !important;
+  border-width: thin !important;
+}
+
+.picker-hide {
+  display: none !important;
+}

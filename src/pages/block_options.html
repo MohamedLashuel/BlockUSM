@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Site Blocking Options</title>
+<link rel="stylesheet" href="../../public/style.css" type="text/css">
+
+</head>
+<body>
+
+<form>
+
+<fieldset>
+	<legend>Manage sets</legend>
+	<label for="set_select">Set to edit:</label>
+	<select id="set_select" name="set_select">
+		<option value="test">Testing</option>
+	</select>
+
+	<button id="add_set" type="button">+ Add block set</button>
+	<button id="remove_set" type="button">- Remove block set</button>
+</fieldset>
+
+<fieldset>
+	<legend>What to block</legend>
+
+	<label for="to_block">Patterns to block:</label>
+	<textarea id="to_block" name="to_block" rows="10" cols="60" placeholder="website.com"></textarea>
+
+	<p>You can end a line in <code>&lt;</code> to mean "end of the URL".</p>
+	<p>You can use * as a wildcard which will match any string of text. ** will match any text not including slashes (/).</p>
+	<em>Examples:</em>
+	<ul>
+		<li><code>news</code> blocks all URLs with "news" in them</li>
+		<li><code>tiktok.com</code> blocks all pages on TikTok</li>
+		<li><code>instagram.com/explore</code> blocks the "Explore" page on Instagram</li>
+		<li><code>youtube.com/&lt;</code> blocks the YouTube home page and nothing else (the slash is necessary)</li>
+		<li><code>reddit.com/*/comments</code> blocks, for example, reddit.com/r/nfl/comments
+	</ul>
+
+	<label for="to_exempt">Blocking exemptions:</label>
+	<textarea id="to_exempt" name="to_exempt" rows="10" cols="60" placeholder="website.com/something"></textarea>
+	<label>If a site matches one of these patterns, you can use it even if it would normally be blocked.</label>
+	<em>Examples:</em>
+	<ul>
+		<li>Blocking <code>youtube.com</code> and exempting <code>youtube.com/watch</code> blocks all pages on YouTube except for individual videos (which always have youtube.com/watch in their URL)</li>
+		<li>Blocking <code>facebook.com</code> and exempting <code>facebook.com/&lt;</code> will allow the Facebook homepage and block all other Facebook pages</li> 
+	</ul>
+</fieldset>
+
+<fieldset>
+	<legend>Element removal</legend>
+	<div class="remove_grid">
+		<label for="removal_name_1">Name:</label>
+		<label for="removal_sel_1">Selector:</label>
+		<label for="removal_pat_1">Site Pattern:</label>
+		<label for="removal_but_1">Delete:</label>
+		<input type="text" class="removal_name_box" id="removal_name_1" name="removal_name_1"></label>
+		<input type="text" class="removal_sel_box" id="removal_sel_1" name="removal_sel_1"></label>
+		<input type="text" class="removal_pat_box" id="removal_pat_1" name="removal_pat_1"></label>
+		<button id="removal_but_1" class="removal_but" type="button">-</button></label>
+		<!-- For testing -->
+		<!-- 
+			<input type="text" class="removal_name_box" id="removal_name_2" name="removal_name_2">
+			<input type="text" class="removal_sel_box" id="removal_sel_2" name="removal_sel_2">
+			<input type="text" class="removal_pat_box" id="removal_pat_2" name="removal_pat_2">
+			<button id="removal_but_1" class="removal_but" type="button">-</button>
+			<input type="text" class="removal_name_box" id="removal_name_2" name="removal_name_2">
+			<input type="text" class="removal_sel_box" id="removal_sel_2" name="removal_sel_2">
+			<input type="text" class="removal_pat_box" id="removal_pat_2" name="removal_pat_2">
+			<button id="removal_but_1" class="removal_but" type="button">-</button> 
+		-->
+	</div>
+	<button id="add_selector" type="button">+ Add selector</button>
+	<p>These can be added automatically using the Element Picker tool. The site patterns work the same way as the website blocking selectors. Advanced users can add these manually: the selectors used are CSS selectors.</p>
+</fieldset>
+
+<fieldset>
+	<legend>Time options (optional)</legend>
+
+	<div>
+		<label for="time_ranges">Times to disable block set:</label>
+		<input type="text" id="time_ranges" name="time_ranges" placeholder="0000-0800, 1600-2400">
+	</div>
+
+	<em>Examples:</em>
+	<ul>
+		<li>Leaving this blank will keep the block set active all day</li>
+		<li><code>0000-0800</code> will be disabled from midnight to 8 A.M., blocking all times after 8 A.M.</li>
+		<li><code>0000-0800, 1600-2400</code> will be disabled from midnight to 8 A.M. and 4 P.M. to midnight, blocking only between 8 A.M. and 4 P.M.</li>
+	</ul>
+
+	<div>
+		<label for="time_limit">Time limit in minutes:</label>
+		<input type="text" id="time_limit" name="time_limit">
+	</div>
+
+	<em>Examples:</em>
+	<ul>
+		<li>Leaving this blank will not allow accessing these sites for any time</li>
+		<li><code>30</code> will allow 30 minutes of access per day</li>
+		<li>Decimals are not allowed</li>
+	</ul>
+
+	<fieldset id="week_checkboxes" class="tight_fieldset">
+		<legend>Days to disable block set:</legend>
+		<label><input type="checkbox" id="sun" name="sun" class="daybox">Sunday</label>
+		<label><input type="checkbox" id="mon" name="mon" class="daybox">Monday</label>
+		<label><input type="checkbox" id="tue" name="tue" class="daybox">Tuesday</label>
+		<label><input type="checkbox" id="wed" name="wed" class="daybox">Wednesday</label>
+		<label><input type="checkbox" id="thu" name="thu" class="daybox">Thursday</label>
+		<label><input type="checkbox" id="fri" name="fri" class="daybox">Friday</label>
+		<label><input type="checkbox" id="sat" name="sat" class="daybox">Saturday</label>
+	</fieldset>
+
+	<label><input type="checkbox" id="override_box" name="override_box">Allow temporary override</label>
+</fieldset>
+
+<button type="button" id="save_changes">Save Changes</button>
+
+</form>
+
+</body>
+</html>
+

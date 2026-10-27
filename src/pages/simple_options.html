@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="../../public/style.css" type="text/css">
+
+</head>
+<body>
+<form>
+<fieldset>
+	<legend>Block websites</legend>
+	<label>Enter one website per line</label>
+	<textarea id="block_sites" name="block_sites" placeholder="website.com&#10;website.com/something" rows=10></textarea><br>
+	<p>You can end a line in <code>&lt;</code> to mean "end of the URL".</p>
+	<p>You can use * as a wildcard which will match any string of text. ** will match any text not including slashes (/).</p>
+	<em>Examples:</em>
+	<ul>
+		<li><code>news</code> blocks all URLs with "news" in them</li>
+		<li><code>tiktok.com</code> blocks all pages on TikTok</li>
+		<li><code>instagram.com/explore</code> blocks the "Explore" page on Instagram</li>
+		<li><code>youtube.com/&lt;</code> blocks the YouTube home page and nothing else (the slash is necessary)</li>
+		<li><code>reddit.com/*/comments</code> blocks, for example, reddit.com/r/nfl/comments
+	</ul>
+	<small>(This corresponds to block set 1 in advanced settings)</small>
+</fieldset>
+
+<fieldset>
+	<legend>Scrub sites from search</legend>
+	<label>Enter one website per line</label>
+	<textarea id="scrub_sites" name="scrub_sites" placeholder="website.com&#10;website.com/something" rows=10></textarea>
+	<p>Supported search engines:</p>
+	<ul>
+		<li>Google</li>
+		<li>DuckDuckGo</li>
+	</ul>
+</fieldset>
+
+<fieldset id="presets">
+	<legend>Element Removal</legend>
+	<label>These will remove the specified element from the website</label>
+	<!-- For testing -->
+	 
+	<!-- <fieldset class="preset_fieldset">
+		<details>
+			<summary>Instagram</summary>
+			<div>
+				<label for="home"><input type="checkbox", id="home", name="home">Home Page</label>
+				<label for="home"><input type="checkbox", id="home", name="home">Home Page</label>
+				<label for="home"><input type="checkbox", id="home", name="home">Home Page</label>
+			</div>
+		</details>
+	</fieldset>
+	<fieldset class="preset_fieldset">
+		<details>
+			<summary>Instagram</summary>
+			<div>
+				<label for="home"><input type="checkbox", id="home", name="home">Home Page</label>
+				<label for="home"><input type="checkbox", id="home", name="home">Home Page</label>
+				<label for="home"><input type="checkbox", id="home", name="home">Home Page</label>
+			</div>
+		</details>
+	</fieldset> -->
+	
+</fieldset>
+<button type="button" id="save_changes">Save Changes</button>
+</form>
+</body>
+</html>
+
