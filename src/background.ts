@@ -1,5 +1,4 @@
 import * as lib from "./lib"
-import browser from "webextension-polyfill";
 
 let g_site_queue: (string | undefined)[] = [];
 // Using lib.setStorage from an extension page or content script updates the cache via message to SW
@@ -38,10 +37,11 @@ function isExtensionPage(url: string | undefined): boolean {
 }
 
 // Site blocking
-async function blockCheck(tab: browser.Tabs.Tab){
+async function blockCheck(tab: browser.tabs.Tab){
 	const url = tab.url;
 	if(isExtensionPage(url)) return
 	if(await lib.isBlocked(await getCachedStorage(), tab.url)){
+		if(tab.id === undefined) return
 		browser.tabs.update(tab.id, {url: lib.extensionPageLink("blocked")});
 	}
 }
@@ -50,7 +50,7 @@ const activeTabs = () => browser.tabs.query({active: true})
 
 // Update the extension toolbar icon with text showing how many minutes left to access current site
 async function updateBadge(){
-	const active_tab: browser.Tabs.Tab | undefined = (await activeTabs())[0];
+	const active_tab: browser.tabs.Tab | undefined = (await activeTabs())[0];
 
 	const badge_text: string = active_tab?.url === undefined ? 
 	"" : 
@@ -70,7 +70,7 @@ async function checkForNewDay(storage: lib.Storage){
 
 // Record which site user is on every second
 async function fastUpdate(){
-	const active_tabs: browser.Tabs.Tab[] = await activeTabs();
+	const active_tabs: browser.tabs.Tab[] = await activeTabs();
 	g_site_queue = g_site_queue.concat(active_tabs.map(tab => tab.url))
 }
 
@@ -89,7 +89,7 @@ function minutesToBadgeText(minutes: number | undefined): string {
 	return `${val}m`
 }
 
-async function handleTabUpdate(tab: browser.Tabs.Tab, changeInfo: browser.Tabs.OnUpdatedChangeInfoType,
+async function handleTabUpdate(tab: browser.tabs.Tab, changeInfo: browser.tabs._OnUpdatedChangeInfo,
 	tab_id: number){
 	// Only update if the url changed
 	if(!changeInfo.url) return;

@@ -1,4 +1,3 @@
-import browser from "webextension-polyfill";
 import * as lib from "../lib";
 import * as dl from "../domlib"
 import * as ps from "../preset_selectors";

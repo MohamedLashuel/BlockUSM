@@ -1,4 +1,3 @@
-import browser from "webextension-polyfill";
 import $ from "jquery";
 import 'jquery-validation';
 import '../jquery.are-you-sure';

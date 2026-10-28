@@ -1,4 +1,3 @@
-import browser from "webextension-polyfill";
 import $ from "jquery"
 import * as lib from "../lib"
 

@@ -1,6 +1,5 @@
 import * as lib from "../lib"
 import * as dl from "../domlib"
-import browser from "webextension-polyfill";
 import $ from "jquery"
 
 // CSS object which hides the passed in selectors

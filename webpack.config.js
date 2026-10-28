@@ -7,7 +7,7 @@ function pathToName(file){
 }
 
 module.exports = {
-  // Evil coding hack to load all typescript files
+  // Evil coding hack to load all script files
   entry: glob.sync(['src/**/*.ts', 'src/**/*.js']).reduce(function(obj, el){
      obj[pathToName(el)] = "./" + el;
      return obj
@@ -29,8 +29,13 @@ module.exports = {
     filename: '[name].js',
     clean: true
   },
-  mode: "development",
+  mode: "production",
+  //mode: "development",
+  
   devtool: "source-map",
+
+  node: false,
+  
   // Auto inject scripts into html files 
   plugins: glob.sync("src/pages/**/*.html").map((html_file) => {
   	const nm = pathToName(html_file)
@@ -38,7 +43,17 @@ module.exports = {
   	return new HtmlWebpackPlugin({
   		filename: out,
   		template: html_file,
-  		chunks: glob.sync(`src/pages/**/${nm}.ts`).map(pathToName)
+  		chunks: glob.sync(`src/pages/**/${nm}.ts`).map(pathToName),
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        // Change the default which removes default attributes which are needed for querying
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
   	})
   })
    

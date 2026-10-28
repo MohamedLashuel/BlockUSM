@@ -1,6 +1,5 @@
 import * as lib from "../lib"
 import * as dl from "../domlib"
-import browser from "webextension-polyfill";
 import $ from "jquery"
 
 const ENGINE_SELECTORS: Record<string, string[]> = {
@@ -9,7 +8,7 @@ const ENGINE_SELECTORS: Record<string, string[]> = {
 	"duckduckgo.com/?*t=*q=": ["article", 'li']
 };
 
-function getSelectorsForURL(url: string){
+function getEngineSelectorsForURL(url: string){
 	const matches: string[][] = Object.entries(ENGINE_SELECTORS)
 		.filter(x => lib.matchesPattern(url, x[0]))
 		.map(x => x[1]);
@@ -23,7 +22,7 @@ function elementLinksToPattern(el: HTMLElement, patterns: string[]): boolean {
 }
 
 function scrubPage(scrub_patterns: string[], url: string){
-	const result_selectors = getSelectorsForURL(url);
+	const result_selectors = getEngineSelectorsForURL(url);
 	const results = $(result_selectors.join(","));
 	const scrubbable = results.filter((_i, el) => elementLinksToPattern(el, scrub_patterns))
 	scrubbable.hide();
@@ -35,7 +34,7 @@ function handleChanges(records: MutationRecord[], scrub_patterns: string[], url:
 }
 
 function isScrubbable(url: string): boolean {
-	return getSelectorsForURL(url).length > 0;
+	return getEngineSelectorsForURL(url).length > 0;
 }
 
 // Can't use await in top level, so just stick everything we want to run in a function

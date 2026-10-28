@@ -1,4 +1,3 @@
-import browser from "webextension-polyfill";
 import $ from "jquery";
 import { finder, className } from "@medv/finder";
 import * as lib from "../lib";

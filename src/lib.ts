@@ -1,6 +1,4 @@
-import browser from "webextension-polyfill";
 import * as ps from "./preset_selectors"
-const reEscape: (s: string) => string = require('regexp.escape');
 import * as u from "./utils";
 export * as u from "./utils"
 
@@ -23,14 +21,14 @@ function isTimeWithinRange(time: Time, range: TimeRange) {
 
 export const days: string[] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 // Today's day of week string
-const todayDow = (): string => days[new Date().getDate()]
+const todayDow = (): string => days[new Date().getDay()]
 
 // Can use * as wildcard, can end with < to not match anything after. ** is wildcard except for /
 export function matchesPattern(str: string, pat: string): boolean{
-	const regex = new RegExp(reEscape(pat)
-		.replaceAll(reEscape("**"), "[^/]*")
-		.replaceAll(reEscape("*"), ".*")
-		.replaceAll(reEscape("<"), "$")
+	const regex = new RegExp(RegExp.escape(pat)
+		.replaceAll(RegExp.escape("**"), "[^/]*")
+		.replaceAll(RegExp.escape("*"), ".*")
+		.replaceAll(RegExp.escape("<"), "$")
 	);
 	return regex.test(str);
 }
@@ -110,7 +108,7 @@ export async function getStorage(): Promise<Storage> {
 
 // Update storage and cache if it is set
 export async function setStorage(obj: Partial<Storage>) {
-	browser.runtime.sendMessage(undefined, {name: "update_storage", value: obj});
+	browser.runtime.sendMessage({name: "update_storage", value: obj});
 	browser.storage.local.set(obj);
 }
 
@@ -204,7 +202,7 @@ export async function minutesLeft(storage: Storage, site: string): Promise<numbe
 }
 
 export async function requestCachedStorage(): Promise<Storage> {
-	return (await browser.runtime.sendMessage(undefined, {name: "storage_request"})) as Storage
+	return (await browser.runtime.sendMessage({name: "storage_request"})) as Storage
 }
  
 export async function startOverride(minutes: number){
