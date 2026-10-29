@@ -1,6 +1,6 @@
 Store Name: BlockUSM - Stop Doomscrolling
 
-Short Description: A free extension to block yourself from accessing websites, remove distracting elements from social media like feeds and shorts, and remove sites from search results.
+Short Description (Firefox): Block yourself from accessing websites, remove distracting elements from social media, and remove sites from search results.
 
 Page: BlockUSM is a comprehensive social media blocker - you can block websites entirely, block only certain features of a site, and remove websites from search results on search engines such as Google.
 

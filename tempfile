@@ -1,0 +1,21 @@
+frescobaldi	Frescobaldi app
+fluidsynth	To support soundfonts and play MIDI
+fluid-soundfont-gs	Basic fluid synth soundfonts
+fluid-soundfont-gm	Basic fluid synth soundfonts
+vlc-plugin-fluidsynth	To get MIDI working in VLC
+linux-headers-6.12.100+deb13-amd64	To get rtw89 wifi drivers working
+timidity	For ly2video
+pyenv	For managing old python versions
+ffmpeg	It's ffmpeg
+firefox	Firefox browser
+firefox-esr	In case firefox stops working
+trash-cli	Trash bin functionality, backend for del
+terminator	Main terminal
+rstudio	Rstudio app
+shellcheck	Check shell scripts for common errors
+redshift	Red light filter on screen
+mousepad	Simple text editor
+rlwrap	Lilypond scheme sandbox: proper cursor movement and history
+libfuse2t64	Fuse for openshot
+alacarte	Easy addition of desktop entries
+wine32:i386	To get wine working
