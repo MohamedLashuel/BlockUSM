@@ -4,6 +4,8 @@
 2. Navigate to the project root and run `npm i` to install dependencies
 3. Run `build.sh`
 
+The compiled .zip extension will be in web-ext-artifacts.
+
 # Testing
 
-With playwright installed with npm, run `npx playwright`
+With playwright installed with npm, run `npx playwright test`

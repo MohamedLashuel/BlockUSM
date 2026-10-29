@@ -2,7 +2,7 @@ import { test, expect } from './fixtures';
 import {type Page } from '@playwright/test';
 
 function extPage(extid: string, file: string): string{
-  return `chrome-extension://${extid}/dist/pages/${file}.html`
+  return `chrome-extension://${extid}/pages/${file}.html`
 }
 
 test('remove heading from wikipedia', async ({ page, extId }) => {

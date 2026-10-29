@@ -161,7 +161,7 @@ export async function removalSelectors(url: string | undefined): Promise<string[
 }
 
 export function extensionPageLink(page: string): string {
-	return browser.runtime.getURL(`dist/pages/${page}.html`);
+	return browser.runtime.getURL(`pages/${page}.html`);
 }
 
 // Given a list of sites to add a second to, add a second to them all. Return the new seconds used

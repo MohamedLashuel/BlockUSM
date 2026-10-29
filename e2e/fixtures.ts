@@ -6,7 +6,7 @@ export const test = base.extend<{
   extId: string;
 }>({
   context: async ({ }, use) => {
-    const pathToExtension = "~/Coding/BlockUSM";
+    const pathToExtension = "~/Coding/BlockUSM/dist";
     const context = await chromium.launchPersistentContext('', {
       channel: 'chromium',
       args: [

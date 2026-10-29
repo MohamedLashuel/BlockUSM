@@ -27,7 +27,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    clean: true
+    clean: true,
+    copy: ["manifest.json", { from: "public", to: "public"} ]
   },
   mode: "production",
   //mode: "development",

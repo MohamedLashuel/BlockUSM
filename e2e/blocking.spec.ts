@@ -2,7 +2,7 @@ import { test, expect } from './fixtures';
 import {type Page } from '@playwright/test'
 
 function extPage(extid: string, file: string): string{
-  return `chrome-extension://${extid}/dist/pages/${file}.html`
+  return `chrome-extension://${extid}/pages/${file}.html`
 }
 
 const startOf2000 = new Date(2000,1,1,0,0,0);
