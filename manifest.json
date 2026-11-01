@@ -41,6 +41,9 @@
       "128": "public/images/icon-128.png"
     }
   },
+  "options_ui": {
+    "page": "pages/popup.html"
+  },
   "permissions": ["storage", "tabs"],
   "browser_specific_settings": {
     "gecko": {
