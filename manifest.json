@@ -1,7 +1,7 @@
 {
   "name": "BlockUSM",
   "description": "Block yourself from accessing websites, remove distracting elements from social media, and remove sites from search results.",
-  "version": "1.0",
+  "version": "1.01",
   "manifest_version": 3,
   "icons": {
     "16": "public/images/icon-16.png",
